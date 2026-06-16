@@ -1,10 +1,10 @@
 #!/bin/bash
-
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$SCRIPT_DIR/.cursor/rules"
 TARGET_DIR=".cursor/rules"
+DARKSIDE_HOME="$HOME/.darkside"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "❌ Diretório de rules não encontrado: $SOURCE_DIR"
@@ -12,6 +12,7 @@ if [ ! -d "$SOURCE_DIR" ]; then
 fi
 
 mkdir -p "$TARGET_DIR"
+mkdir -p "$DARKSIDE_HOME"
 
 count=0
 for file in "$SOURCE_DIR"/*.mdc; do
@@ -27,6 +28,13 @@ if [ "$count" -eq 0 ]; then
 fi
 
 echo "✅ Darkside instalado — $count rules copiadas para $TARGET_DIR/"
+
+# Save installed version
+if [ -f "$SCRIPT_DIR/VERSION" ]; then
+  cp "$SCRIPT_DIR/VERSION" "$DARKSIDE_HOME/VERSION"
+  echo "✅ Versão $(cat "$SCRIPT_DIR/VERSION") salva em $DARKSIDE_HOME/VERSION"
+fi
+
 echo ""
 echo "Skills disponíveis:"
 echo "  /darkside  /explore  /quest  /war-room  /interrogate"

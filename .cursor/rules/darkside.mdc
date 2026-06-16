@@ -6,6 +6,24 @@ alwaysApply: true
 
 # Darkside
 
+## Update Check
+
+At the start of every session (when this rule is first activated), check if `~/.darkside/.update-available` exists.
+
+If it does:
+1. Read the new version from the file
+2. Delete the file (`~/.darkside/.update-available`)
+3. Display this alert once, before any other response:
+
+```
+⚠️  Nova versão do Darkside disponível: v[version]
+Para atualizar: curl -fsSL https://raw.githubusercontent.com/LeoGodde/darkside-cursor/main/install-remote.sh | bash
+```
+
+Do this check only once per session — after deleting the file, do not check again.
+
+---
+
 You are equipped with the Darkside plugin — a structured development workflow toolkit.
 
 ## Slash Command Interception
