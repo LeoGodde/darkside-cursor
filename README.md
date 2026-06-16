@@ -11,34 +11,42 @@
 
 Plugin Darkside para Cursor — workflows padronizados de desenvolvimento para o time.
 
-Adaptação do [darkside](https://github.com/leogodde/darkside) (Claude Code) para Cursor Rules.
+Adaptação do [darkside](https://github.com/LeoGodde/darkside) (Claude Code) para Cursor Rules.
 
 ## Instalação
 
 Na raiz do projeto onde quer usar o Darkside:
 
 ```bash
-bash /caminho/para/darkside-cursor/install.sh
+curl -fsSL https://raw.githubusercontent.com/LeoGodde/darkside-cursor/main/install-remote.sh | bash
 ```
 
-As rules são copiadas para `.cursor/rules/` do projeto atual.
+O installer:
+- Instala todas as rules em `.cursor/rules/` do projeto atual
+- Salva a versão instalada em `~/.darkside/VERSION`
 
-## Desinstalar
+Abra o chat do Cursor e digite `/darkside` para confirmar a instalação.
+
+> O Darkside Cursor é **por projeto** — rode o comando em cada projeto onde quiser usá-lo.
+
+## Atualização
 
 ```bash
-bash /caminho/para/darkside-cursor/uninstall.sh
+curl -fsSL https://raw.githubusercontent.com/LeoGodde/darkside-cursor/main/install-remote.sh | bash
 ```
+
+O mesmo comando sempre instala a versão mais recente. Quando uma nova versão estiver disponível e o arquivo sentinela `~/.darkside/.update-available` existir, o Cursor exibirá um alerta no início da sessão.
 
 ## Como usar
 
 No chat do Cursor, digite o nome da skill:
 
 ```
+/darkside
 /explore
 /quest
 /war-room
 /order66
-/darkside
 ```
 
 A rule `darkside.mdc` está sempre ativa e intercepta os comandos `/nome-da-skill`, direcionando para a rule correspondente.
@@ -49,13 +57,13 @@ A rule `darkside.mdc` está sempre ativa e intercepta os comandos `/nome-da-skil
 |-------|-----------|
 | `/darkside` | Exibe o logo e lista todas as skills disponíveis |
 | `/explore` | Análise profunda do projeto |
-| `/quest` | Conversa estruturada de discovery |
+| `/quest` | Discovery e inception de produto, módulo, feature ou estória |
 | `/war-room` | Engineering discovery estruturado |
 | `/interrogate` | Interroga e refina o plano do war-room |
 | `/sith-agents` | Edita os system prompts dos sith-agents |
 | `/order66` | Orquestração completa de desenvolvimento |
 | `/inquisitor` | Inspeção profunda de código |
-| `/mission` | Quest compacto para tarefas menores |
+| `/mission` | Brainstorming compacto para tarefas menores |
 | `/verdict` | Verifica critérios de aceite de cards contra o código |
 | `/guide` | Ajuda |
 
@@ -79,13 +87,25 @@ A rule `darkside.mdc` está sempre ativa e intercepta os comandos `/nome-da-skil
 
 Todos os arquivos gerados ficam em `.darkside/` na raiz de cada projeto (mesma estrutura do plugin Claude Code).
 
+| Diretório | Criado por | Conteúdo |
+|-----------|-----------|----------|
+| `holocrons/` | `/explore` | `tech.md` — stack, arquitetura, convenções |
+| `holomaps/` | `/quest` | Discovery completo por tarefa |
+| `war-room/` | `/war-room` | Planos técnicos |
+| `sith-agents/` | `/explore` | System prompts dos agentes |
+| `imperial-orders/` | `/order66` | Ordens de desenvolvimento + fallen-orders |
+| `the-grand-inquisitor/` | `/inquisitor` | Relatórios de inspeção |
+| `missions/` | `/mission` | Brainstorming compacto |
+| `verdicts/` | `/verdict` | Verificação de critérios de aceite |
+
 ## Diferenças em relação ao Claude Code
 
 | Aspecto | Claude Code | Cursor |
 |---------|-------------|--------|
 | Invocação | Slash commands nativos com autocomplete | Digitar `/nome` no chat (sem autocomplete) |
 | Escopo | Global (`~/.claude/commands/`) | Por projeto (`.cursor/rules/`) |
-| Instalação | `claude plugin install` | `bash install.sh` na raiz do projeto |
+| Instalação | `curl` global | `curl` na raiz de cada projeto |
+| Update checker | Automático (hook a cada prompt) | Manual — rodar o `curl` novamente |
 | TaskCreate/TaskUpdate | Suportado nativamente | Não disponível — removido das skills |
 | Subagentes | Suportado nativamente | Não disponível — instruções inline |
 | MCP | Suportado | Suportado (configurar separadamente) |
