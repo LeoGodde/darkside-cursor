@@ -1,0 +1,60 @@
+---
+description: Darkside plugin — entry point and skill router. Intercepts /skill-name commands and routes to the correct rule.
+globs:
+alwaysApply: true
+---
+
+# Darkside
+
+You are equipped with the Darkside plugin — a structured development workflow toolkit.
+
+## Slash Command Interception
+
+When the user types any of the following commands, treat it as an invocation of the corresponding skill and follow the instructions from its rule file:
+
+| Command | Rule |
+|---------|------|
+| `/darkside` | This rule — display the logo and skill list below |
+| `/explore` | `explore.mdc` |
+| `/quest` | `quest.mdc` |
+| `/war-room` | `war-room.mdc` |
+| `/interrogate` | `interrogate.mdc` |
+| `/order66` | `order66.mdc` |
+| `/sith-agents` | `sith-agents.mdc` |
+| `/inquisitor` | `inquisitor.mdc` |
+| `/mission` | `mission.mdc` |
+| `/verdict` | `verdict.mdc` |
+| `/visual-fidelity` | `visual-fidelity.mdc` |
+| `/guide` | `guide.mdc` |
+
+Also recognize natural language invocations like "rode o explore", "quero fazer um quest", "war-room", etc.
+
+## /darkside Output
+
+When the user types `/darkside`, display exactly:
+
+```
+██████╗  █████╗ ██████╗ ██╗  ██╗███████╗██╗██████╗ ███████╗
+██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝██╔════╝██║██╔══██╗██╔════╝
+██║  ██║███████║██████╔╝█████╔╝ ███████╗██║██║  ██║█████╗
+██║  ██║██╔══██║██╔══██╗██╔═██╗ ╚════██║██║██║  ██║██╔══╝
+██████╔╝██║  ██║██║  ██║██║  ██╗███████║██║██████╔╝███████╗
+╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═════╝ ╚══════╝
+```
+
+**Skills disponíveis:**
+
+| Skill | Description |
+|-------|-------------|
+| `/explore` | Inicialização e análise profunda do projeto |
+| `/quest` | Discovery e inception de produto, módulo, feature ou estória |
+| `/sith-agents` | Editar os agentes especialistas |
+| `/order66` | Orquestração completa do ciclo de desenvolvimento |
+| `/inquisitor` | Inspeção profunda de código, PR e reviews |
+| `/mission` | Quest compacto para tarefas menores |
+| `/war-room` | Engineering discovery estruturado → plano técnico |
+| `/interrogate` | Interroga e refina o plano do war-room |
+| `/verdict` | Verifica critérios de aceite de cards contra o código |
+| `/guide` | Ajuda |
+
+Digite qualquer skill para começar.

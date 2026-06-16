@@ -1,0 +1,80 @@
+---
+description: "Darkside /sith-agents — Edit the system prompts of sith-agents in .darkside/sith-agents/. Lists available agents, asks which to modify and what to change, confirms in plain language and applies upon approval."
+globs:
+alwaysApply: false
+---
+
+# Sith Agents Editor
+
+Guide the user through selecting and editing a sith-agent file. Follow the steps in order.
+
+## Shared Rules
+
+- All messages to the user are in Brazilian Portuguese
+- All generated files are written in English
+- One question or block at a time — never ask two questions in the same message
+- Wait for the user's answer before continuing
+- One follow-up allowed if the answer is ambiguous — do not interrogate
+- If the user stops mid-session, preserve the partial file with its "in progress" header — do not delete it
+- Always write each section to the file before moving to the next
+- Communication is simple, direct, and easy to understand — no unnecessary jargon, without compromising technical precision
+
+---
+
+## Step 1: Check for agents
+
+Check if `.darkside/sith-agents/` exists and contains `.md` files.
+
+If missing or empty:
+> "Nenhum sith-agent encontrado em `.darkside/sith-agents/`. Rode `/explore` primeiro para gerar os agentes."
+
+Stop.
+
+## Step 2: List agents
+
+Read `.md` files from `.darkside/sith-agents/`. Display as numbered list:
+
+- `tdd.md` → 🧪 tdd
+- `engineer.md` → ⚙️ engineer
+- `coder.md` → 💻 coder
+- `security.md` → 🔒 security
+- `reviewer.md` → 🔍 reviewer
+- Other `.md` → 🤖 [name]
+
+> "Qual agente você deseja alterar?"
+
+## Step 3: Confirm agent selection
+
+Resolve number or name to file. If ambiguous, ask again.
+
+> "O que deve ser alterado no agente `[icon] [name]`?"
+
+## Step 4: Describe the change
+
+Read the agent file. Describe changes in plain language:
+
+> "Vou fazer as seguintes alterações no agente `[icon] [name]`:
+>
+> - [one-line description per change]
+>
+> Confirma?"
+
+If confirmed: proceed. If cancelled: "Alteração cancelada." Ask if wants another agent.
+
+## Step 5: Apply the change
+
+Edit the file applying exactly what was described. Do not change anything else.
+
+> "Alteração aplicada com sucesso no agente `[icon] [name]`."
+> "Deseja modificar outro agente?"
+
+If yes: restart from Step 2. If no: stop.
+
+---
+
+## Rules
+
+- Never modify without explicit confirmation in Step 4
+- Only change what was described — no reformatting or unrelated improvements
+- If selected by number, resolve to position in the list shown in Step 2
+- Agent list is always read from disk

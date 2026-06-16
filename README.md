@@ -1,4 +1,4 @@
-# darkside
+# darkside-cursor
 
 ```
 ██████╗  █████╗ ██████╗ ██╗  ██╗███████╗██╗██████╗ ███████╗
@@ -9,23 +9,39 @@
 ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝╚═════╝ ╚══════╝
 ```
 
-Plugin interno para Claude Code — workflows padronizados de desenvolvimento para o time.
+Plugin Darkside para Cursor — workflows padronizados de desenvolvimento para o time.
+
+Adaptação do [darkside](https://github.com/leogodde/darkside) (Claude Code) para Cursor Rules.
 
 ## Instalação
 
-**1. Adicione o repositório como marketplace local:**
+Na raiz do projeto onde quer usar o Darkside:
 
 ```bash
-claude plugin marketplace add /caminho/para/darkside
+bash /caminho/para/darkside-cursor/install.sh
 ```
 
-**2. Instale o plugin:**
+As rules são copiadas para `.cursor/rules/` do projeto atual.
+
+## Desinstalar
 
 ```bash
-claude plugin install darkside@darkside
+bash /caminho/para/darkside-cursor/uninstall.sh
 ```
 
-Após a instalação, as skills ficam disponíveis em toda nova sessão do Claude Code.
+## Como usar
+
+No chat do Cursor, digite o nome da skill:
+
+```
+/explore
+/quest
+/war-room
+/order66
+/darkside
+```
+
+A rule `darkside.mdc` está sempre ativa e intercepta os comandos `/nome-da-skill`, direcionando para a rule correspondente.
 
 ## Skills
 
@@ -33,11 +49,14 @@ Após a instalação, as skills ficam disponíveis em toda nova sessão do Claud
 |-------|-----------|
 | `/darkside` | Exibe o logo e lista todas as skills disponíveis |
 | `/explore` | Análise profunda do projeto |
-| `/quest` | Conversa estruturada de discovery → holomap |
-| `/war-room` | Engineering discovery estruturado → plano técnico completo |
+| `/quest` | Conversa estruturada de discovery |
+| `/war-room` | Engineering discovery estruturado |
+| `/interrogate` | Interroga e refina o plano do war-room |
 | `/sith-agents` | Edita os system prompts dos sith-agents |
-| `/order66` | Orquestração completa de desenvolvimento → plano de implementação, TDD, código, revisão |
-| `/inquisitor` | Inspeção profunda de código → relatório com julgamento final |
+| `/order66` | Orquestração completa de desenvolvimento |
+| `/inquisitor` | Inspeção profunda de código |
+| `/mission` | Quest compacto para tarefas menores |
+| `/verdict` | Verifica critérios de aceite de cards contra o código |
 | `/guide` | Ajuda |
 
 ## Fluxo recomendado
@@ -58,57 +77,15 @@ Após a instalação, as skills ficam disponíveis em toda nova sessão do Claud
 
 ## Armazenamento
 
-Todos os arquivos gerados ficam em `.darkside/` na raiz de cada projeto.
+Todos os arquivos gerados ficam em `.darkside/` na raiz de cada projeto (mesma estrutura do plugin Claude Code).
 
-### Holocrons — `.darkside/holocrons/`
+## Diferenças em relação ao Claude Code
 
-Arquivos de conhecimento sobre o projeto. Escritos uma vez, atualizados quando o projeto muda.
-
-| Arquivo | Criado por | Conteúdo |
-|---------|-----------|----------|
-| `tech.md` | `/explore` | Stack, arquitetura, estrutura de pastas, convenções |
-
-### Holomaps — `.darkside/holomaps/`
-
-Documentos de discovery para tarefas específicas. Um arquivo por tarefa, criado pelo `/quest`.
-
-| Arquivo | Criado por | Conteúdo |
-|---------|-----------|----------|
-| `YYYY-MM-DD-<tarefa>.md` | `/quest` | Discovery completo de uma tarefa de desenvolvimento |
-
-### War Room — `.darkside/war-room/`
-
-Planos técnicos de engineering discovery criados pelo `/war-room`.
-
-| Arquivo | Criado por | Conteúdo |
-|---------|-----------|----------|
-| `YYYY-MM-DD-<plano>-plan.md` | `/war-room` | Entendimento funcional, impacto técnico e estratégia de implementação |
-
-### Sith Agents — `.darkside/sith-agents/`
-
-System prompts de agentes especialistas gerados pelo `/explore`. Editáveis via `/sith-agents`.
-
-| Arquivo | Especialidade |
-|---------|--------------|
-| `tdd.md` | Estratégia de testes, red-green-refactor, cobertura |
-| `engineer.md` | Decisões técnicas, trade-offs, fit arquitetural |
-| `coder.md` | Implementação limpa, convenções do projeto, nomenclatura |
-| `security.md` | OWASP, validação de input, autenticação, secrets |
-| `reviewer.md` | Correção, consistência, enforcement de padrões |
-
-### Imperial Orders — `.darkside/imperial-orders/`
-
-Documentos do ciclo completo de desenvolvimento, criados pelo `/order66`.
-
-| Arquivo | Conteúdo |
-|---------|----------|
-| `YYYY-MM-DD-<feature>-order.md` | Ordem imperial + tarefas de uma feature |
-| `fallen-orders/YYYY-MM-DD-<feature>-fallen-order.md` | Relatório de falha após 2 revisões rejeitadas |
-
-### The Grand Inquisitor — `.darkside/the-grand-inquisitor/`
-
-Relatórios de inspeção profunda criados pelo `/inquisitor`.
-
-| Arquivo | Conteúdo |
-|---------|----------|
-| `YYYY-MM-DD-<alvo>-report.md` | Veredictos de engenharia, segurança e cobertura + julgamento final |
+| Aspecto | Claude Code | Cursor |
+|---------|-------------|--------|
+| Invocação | Slash commands nativos com autocomplete | Digitar `/nome` no chat (sem autocomplete) |
+| Escopo | Global (`~/.claude/commands/`) | Por projeto (`.cursor/rules/`) |
+| Instalação | `claude plugin install` | `bash install.sh` na raiz do projeto |
+| TaskCreate/TaskUpdate | Suportado nativamente | Não disponível — removido das skills |
+| Subagentes | Suportado nativamente | Não disponível — instruções inline |
+| MCP | Suportado | Suportado (configurar separadamente) |
