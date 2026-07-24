@@ -59,7 +59,7 @@ Todos os arquivos gerados ficam em `.darkside/` na raiz do projeto.
 | `holomaps/` | `/quest` | Discovery completo por tarefa |
 | `war-room/` | `/war-room` | Planos técnicos |
 | `sith-agents/` | `/explore` | System prompts dos agentes (tdd, engineer, coder, security, reviewer, debugger) |
-| `forensics/` | `/hunter` | Relatórios forenses de investigação de bugs |
+| `hunter/` | `/hunter` | Relatórios forenses de investigação de bugs |
 | `imperial-orders/` | `/order66` | Ordens de desenvolvimento + fallen-orders |
 | `the-grand-inquisitor/` | `/inquisitor` | Relatórios de inspeção |
 | `missions/` | `/mission` | Brainstorming compacto |
