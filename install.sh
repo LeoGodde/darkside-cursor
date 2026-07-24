@@ -31,11 +31,20 @@ echo "✅ Darkside instalado — $count rules copiadas para $TARGET_DIR/"
 
 # Save installed version
 if [ -f "$SCRIPT_DIR/VERSION" ]; then
-  cp "$SCRIPT_DIR/VERSION" "$DARKSIDE_HOME/VERSION"
-  echo "✅ Versão $(cat "$SCRIPT_DIR/VERSION") salva em $DARKSIDE_HOME/VERSION"
+  cp "$SCRIPT_DIR/VERSION" "$DARKSIDE_HOME/CURSOR-VERSION"
+  VERSION="$(cat "$SCRIPT_DIR/VERSION")"
+  echo "✅ Versão $VERSION salva em $DARKSIDE_HOME/CURSOR-VERSION"
+fi
+
+# Install update checker
+if [ -f "$SCRIPT_DIR/scripts/check-update.sh" ]; then
+  cp "$SCRIPT_DIR/scripts/check-update.sh" "$DARKSIDE_HOME/cursor-check-update.sh"
+  chmod +x "$DARKSIDE_HOME/cursor-check-update.sh"
+  echo "✅ Update checker instalado em $DARKSIDE_HOME/cursor-check-update.sh"
 fi
 
 echo ""
 echo "Skills disponíveis:"
 echo "  /darkside  /explore  /quest  /war-room  /interrogate"
-echo "  /order66   /sith-agents  /inquisitor  /mission  /verdict  /guide"
+echo "  /order66   /sith-agents  /inquisitor  /mission"
+echo "  /verdict   /visual-fidelity  /hunter  /guide"

@@ -8,11 +8,11 @@ alwaysApply: true
 
 ## Update Check
 
-At the start of every session (when this rule is first activated), check if `~/.darkside/.update-available` exists.
+At the start of every session (when this rule is first activated), check if `~/.darkside/.cursor-update-available` exists.
 
 If it does:
 1. Read the new version from the file
-2. Delete the file (`~/.darkside/.update-available`)
+2. Delete the file (`~/.darkside/.cursor-update-available`)
 3. Display this alert once, before any other response:
 
 ```

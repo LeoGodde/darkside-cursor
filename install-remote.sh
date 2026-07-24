@@ -48,15 +48,23 @@ done
 echo "✅ $count rules instaladas em $TARGET_DIR/"
 
 # Save version
-echo "$VERSION" > "$DARKSIDE_HOME/VERSION"
-echo "✅ Versão $VERSION salva em $DARKSIDE_HOME/VERSION"
+echo "$VERSION" > "$DARKSIDE_HOME/CURSOR-VERSION"
+echo "✅ Versão $VERSION salva em $DARKSIDE_HOME/CURSOR-VERSION"
+
+# Install update checker
+if [ -f "$EXTRACTED/scripts/check-update.sh" ]; then
+  cp "$EXTRACTED/scripts/check-update.sh" "$DARKSIDE_HOME/cursor-check-update.sh"
+  chmod +x "$DARKSIDE_HOME/cursor-check-update.sh"
+  echo "✅ Update checker instalado em $DARKSIDE_HOME/cursor-check-update.sh"
+fi
 
 echo ""
 echo "✅ Darkside Cursor $VERSION instalado."
 echo ""
 echo "Skills disponíveis:"
 echo "  /darkside  /explore  /quest  /war-room  /interrogate"
-echo "  /order66   /sith-agents  /inquisitor  /mission  /verdict  /guide"
+echo "  /order66   /sith-agents  /inquisitor  /mission"
+echo "  /verdict   /visual-fidelity  /hunter  /guide"
 echo ""
 echo "Para atualizar no futuro:"
 echo "  curl -fsSL https://raw.githubusercontent.com/$REPO/main/install-remote.sh | bash"
