@@ -8,7 +8,13 @@ alwaysApply: true
 
 ## Update Check
 
-At the start of every session (when this rule is first activated), check if `~/.darkside/.cursor-update-available` exists.
+At the start of every session (when this rule is first activated), silently run the update checker:
+
+```bash
+bash ~/.darkside/cursor-check-update.sh 2>/dev/null || true
+```
+
+Then check if `~/.darkside/.cursor-update-available` exists.
 
 If it does:
 1. Read the new version from the file
@@ -45,6 +51,7 @@ When the user types any of the following commands, treat it as an invocation of 
 | `/visual-fidelity` | `visual-fidelity.mdc` |
 | `/hunter` | `hunter.mdc` |
 | `/design-schematic` | `design-schematic.mdc` |
+| `/probe-droid` | `probe-droid.mdc` |
 | `/guide` | `guide.mdc` |
 
 Also recognize natural language invocations like "rode o explore", "quero fazer um quest", "war-room", etc.
@@ -77,6 +84,7 @@ When the user types `/darkside`, display exactly:
 | `/verdict` | Verifica critérios de aceite de cards contra o código |
 | `/hunter` | Caçador de bug — Compreensão aprofundada |
 | `/design-schematic` | Design prompt engineering → prompts Lo-Fi, Mid-Fi, Hi-Fi para Figma Make |
+| `/probe-droid` | Gerador de notas de QA não-técnicas a partir do diff de uma branch |
 | `/guide` | Ajuda |
 
 Digite qualquer skill para começar.
