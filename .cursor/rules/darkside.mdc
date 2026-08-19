@@ -49,9 +49,11 @@ When the user types any of the following commands, treat it as an invocation of 
 | `/mission` | `mission.mdc` |
 | `/verdict` | `verdict.mdc` |
 | `/visual-fidelity` | `visual-fidelity.mdc` |
+| `/spec-verdict` | `spec-verdict.mdc` |
 | `/hunter` | `hunter.mdc` |
 | `/design-schematic` | `design-schematic.mdc` |
 | `/probe-droid` | `probe-droid.mdc` |
+| `/scribe` | `scribe.mdc` |
 | `/guide` | `guide.mdc` |
 
 Also recognize natural language invocations like "rode o explore", "quero fazer um quest", "war-room", etc.
@@ -85,6 +87,8 @@ When the user types `/darkside`, display exactly:
 | `/hunter` | Caçador de bug — Compreensão aprofundada |
 | `/design-schematic` | Design prompt engineering → prompts Lo-Fi, Mid-Fi, Hi-Fi para Figma Make |
 | `/probe-droid` | Gerador de notas de QA não-técnicas a partir do diff de uma branch |
+| `/scribe` | Gera, revisa e mantém documentação do projeto para desenvolvedores, usuários e clientes |
+| `/spec-verdict` | Verifica se critérios de aceite estão representados no design do Figma |
 | `/guide` | Ajuda |
 
 Digite qualquer skill para começar.
