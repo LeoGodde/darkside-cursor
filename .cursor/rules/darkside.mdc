@@ -53,6 +53,7 @@ When the user types any of the following commands, treat it as an invocation of 
 | `/hunter` | `hunter.mdc` |
 | `/design-schematic` | `design-schematic.mdc` |
 | `/probe-droid` | `probe-droid.mdc` |
+| `/moff` | `moff.mdc` |
 | `/scribe` | `scribe.mdc` |
 | `/project-master` | `project-master.mdc` |
 | `/guide` | `guide.mdc` |
@@ -88,6 +89,7 @@ When the user types `/darkside`, display exactly:
 | `/hunter` | Caçador de bug — Compreensão aprofundada |
 | `/design-schematic` | Design prompt engineering → prompts Lo-Fi, Mid-Fi, Hi-Fi para Figma Make |
 | `/probe-droid` | Gerador de notas de QA não-técnicas a partir do diff de uma branch |
+| `/moff` | Gestão de projeto — charter, backlog, esteira de execução, métricas e riscos |
 | `/scribe` | Gera, revisa e mantém documentação do projeto para desenvolvedores, usuários e clientes |
 | `/spec-verdict` | Verifica se critérios de aceite estão representados no design do Figma |
 | `/project-master` | Avaliação profunda do código — scorecard e relatório de engenharia completo |
