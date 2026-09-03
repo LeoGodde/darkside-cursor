@@ -54,6 +54,7 @@ When the user types any of the following commands, treat it as an invocation of 
 | `/design-schematic` | `design-schematic.mdc` |
 | `/probe-droid` | `probe-droid.mdc` |
 | `/scribe` | `scribe.mdc` |
+| `/project-master` | `project-master.mdc` |
 | `/guide` | `guide.mdc` |
 
 Also recognize natural language invocations like "rode o explore", "quero fazer um quest", "war-room", etc.
@@ -89,6 +90,7 @@ When the user types `/darkside`, display exactly:
 | `/probe-droid` | Gerador de notas de QA não-técnicas a partir do diff de uma branch |
 | `/scribe` | Gera, revisa e mantém documentação do projeto para desenvolvedores, usuários e clientes |
 | `/spec-verdict` | Verifica se critérios de aceite estão representados no design do Figma |
+| `/project-master` | Avaliação profunda do código — scorecard e relatório de engenharia completo |
 | `/guide` | Ajuda |
 
 Digite qualquer skill para começar.
